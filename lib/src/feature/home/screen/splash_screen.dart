@@ -12,8 +12,8 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 10), () {
-      Navigator.push(
+    Future.delayed(const Duration(seconds: 5), () {
+      Navigator.pushReplacement(
         // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(builder: (context) => const HomeScreen()),
@@ -25,7 +25,7 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 218, 179, 192),
+        backgroundColor:Colors.pink[200],
         centerTitle: true,
         title: const Text(
           "Welcome",

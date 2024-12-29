@@ -14,11 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return BlocConsumer<CounterCubit, CounterState>(
       listener: (context, state) {
-        if (state is CounterUpdate) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("updated")),
-          );
-        }
+        //
       },
       builder: (context, state) {
         CounterCubit counter = BlocProvider.of(context);
@@ -29,57 +25,63 @@ class _HomeScreenState extends State<HomeScreen> {
             title: const Text("//",
                 style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
           ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 200,
-                    height: 200,
-                    alignment: Alignment.center,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
+          body: Padding(
+            padding: const EdgeInsets.only(top:60),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 200,
+                      height: 200,
+                      alignment: Alignment.center,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                      ),
+                      child: Text(
+                        state.count.toString(),
+                        style: const TextStyle(fontSize: 32),
+                      ),
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 100,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: const CircleBorder(),
+                        padding: const EdgeInsets.all(40),
+                        elevation: 5,
+                      ),
+                      onPressed: counter.reset,
+                      child: const Icon(Icons.restart_alt_rounded,size: 30,),
                     ),
-                    child: Text(counter.x.toString()),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 200,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: const CircleBorder(), 
-                      padding:
-                          const EdgeInsets.all(40), 
-                      elevation: 5,
+                    const SizedBox(
+                      width: 100,
                     ),
-                    onPressed: counter.reset,
-                    child: const Icon(Icons.restart_alt_rounded),
-                  ),
-                  const SizedBox(
-                    width: 100,
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shape: const CircleBorder(),
-                      padding: const EdgeInsets.all(40),
-                      elevation: 5,
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: const CircleBorder(),
+                        padding: const EdgeInsets.all(40),
+                        elevation: 5,
+                      ),
+                      onPressed: counter.add,
+                      child: const Icon(Icons.add,size: 30,),
                     ),
-                    onPressed: counter.add,
-                    child: const Icon(Icons.add),
-                  ),
-                ],
-              )
-            ],
+                  ],
+                )
+              ],
+            ),
           ),
         );
       },

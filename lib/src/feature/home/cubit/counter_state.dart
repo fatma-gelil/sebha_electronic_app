@@ -1,7 +1,14 @@
 part of 'counter_cubit.dart';
 
-sealed class CounterState {}
+abstract class CounterState {
+  final int count;
+  const CounterState(this.count);
+}
 
-final class CounterInitial extends CounterState {}
+class CounterInitial extends CounterState {
+  CounterInitial(super.count);
+}
 
-final class CounterUpdate extends CounterState {}
+class CounterUpdate extends CounterState {
+  CounterUpdate(super.count);
+}

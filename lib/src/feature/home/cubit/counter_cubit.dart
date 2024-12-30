@@ -4,19 +4,46 @@ import 'package:task4/src/feature/home/cubit/counter_state.dart';
 
 class CounterCubit extends Cubit<CounterState> {
   CounterCubit() : super(CounterInitial());
-
+  double count = 0;
+  Color color = Colors.pink[200]!;
+  String title = 'سبحان الله';
   void add() {
-    emit(CounterUpdate(state.count + 1, state.color,state.title));
+    count++;
+    emit(CounterUpdate());
   }
 
   void reset() {
-    emit(CounterUpdate(0, state.color,state.title));
+    count = 0;
+    emit(CounterUpdate());
   }
 
-  void changeBackgroundColor(Color newColor) {
-    emit(BackgroundColor(state.count, newColor,state.title));
+  void colorbrown() {
+    color = Colors.brown;
+    emit(CounterTitleUpdate());
   }
-  void changeTitle(String newTitle) {
-    emit(CounterTitleUpdate(newTitle, state.count, state.color));
+
+  void colorpink() {
+    color = Colors.pink[200]!;
+    emit(CounterTitleUpdate());
+  }
+
+  void colorblue() {
+    color = Colors.blue[200]!;
+    emit(CounterTitleUpdate());
+  }
+
+  void title1() {
+    title = 'سبحان الله';
+    emit(CounterTitleUpdate());
+  }
+
+  void title2() {
+    title = 'الحمد لله';
+    emit(CounterTitleUpdate());
+  }
+
+  void title3() {
+    title = 'لا اله الا الله';
+    emit(CounterTitleUpdate());
   }
 }

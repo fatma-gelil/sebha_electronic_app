@@ -1,28 +1,24 @@
 import 'package:flutter/material.dart';
 
 abstract class CounterState {
-  final int count;
-  final Color color;
-  final String title;
-
-  const CounterState(this.count, this.color,this.title);
+  const CounterState();
 }
 
 class CounterInitial extends CounterState {
-  CounterInitial() : super(0, Colors.pink[200]!,'سبحان الله'); 
+  CounterInitial();
 }
 
 class CounterUpdate extends CounterState {
-  CounterUpdate(super.count, super.color,super.title);
+  CounterUpdate();
 }
 
 class BackgroundColor extends CounterState {
-  BackgroundColor(super.count, super.color,super.title);
+  final Color color;
+  BackgroundColor(this.color);
 }
-class CounterTitleUpdate extends CounterState {
-  @override
-  // ignore: overridden_fields
-  final String title;
 
-  CounterTitleUpdate(this.title, int count, Color color) : super(count, color,title);
+class CounterTitleUpdate extends CounterState {
+  
+
+  CounterTitleUpdate();
 }

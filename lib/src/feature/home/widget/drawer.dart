@@ -17,7 +17,7 @@ class MyDrawer extends StatelessWidget {
            DrawerHeader(child:Image.asset('assets/images/logo.png')),
           ElevatedButton(
             onPressed: () {
-              counter.changeTitle('سبحان الله');
+              counter.title1();
             },
             child: const Text(
              'سبحان الله' ,
@@ -27,7 +27,7 @@ class MyDrawer extends StatelessWidget {
           const SizedBox(height: 40,),
           ElevatedButton(
             onPressed: () {
-              counter.changeTitle('الحمد لله');
+              counter.title2();
             },
             child: const Text(
               'الحمد لله',
@@ -37,7 +37,7 @@ class MyDrawer extends StatelessWidget {
           const SizedBox(height: 40,),
           ElevatedButton(
             onPressed: () {
-              counter.changeTitle('لا اله الا الله');
+              counter.title3();
             },
             child: const Text(
               'لا اله الا الله',
